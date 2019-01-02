@@ -1,7 +1,7 @@
 
 package blackjack;
 
-public class Card {
+public class _Card {
 
     private int number;
     private String type;
@@ -28,7 +28,7 @@ public class Card {
         this.value = value;
     }
 
-    public Card(int numar, String tip, int value, String i) {
+    public _Card(int numar, String tip, int value, String i) {
         this.number = numar;
         this.type = tip;
         this.value = value;

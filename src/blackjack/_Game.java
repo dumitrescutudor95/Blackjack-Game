@@ -5,121 +5,121 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-public class Game extends javax.swing.JFrame {
+public class _Game extends javax.swing.JFrame {
 
-    //Lista celor 52 de carti de joc
-    public List<Card> cardList = new ArrayList<>();
+    //Deck of cards
+    public List<_Card> cardList = new ArrayList<>();
 
-    //listele celor doua maini , in care Asii au valoarea 1
-    public List<Card> handPlayer1 = new ArrayList<>();
-    public List<Card> handPlayer2 = new ArrayList<>();
+    //Each player's hand list
+    public List<_Card> handPlayer1 = new ArrayList<>();
+    public List<_Card> handPlayer2 = new ArrayList<>();
 
-    //Totalul valorii mainlor in care asii au valoarea 1
+    //Each player's score (when Ace value=1)
     private int player1TotalScore = 0;
     private int player2TotalScore = 0;
 
-    //Totalul valorii mainlor in care asii au valoarea 11
+    //Each player's score (when Ace value=11)
     private int player1TotalScore_A_equals_11 = 0;
     private int player2TotalScore_A_eqals_11 = 0;
 
-    //Valoarea finala a punctajului fiecarui jucator
+    //Final scores
     private int player1FinalScore = 0;
     private int player2FinalScore = 0;
 
-    //Indexul cartii din pachet
+    //The card's index 
     private int indexCard = 0;
 
-    //Variabile ce contin numarul de carti trase de fiecare player
+    //Number of cards pulled by each player
     private int cardsPlayer1Pulled = 0;
     private int cardsPlayer2Pulled = 0;
 
-    //Castigatorul
+    //The winner
     private String winner = "";
 
     //Round over or not?
     private boolean roundOver = false;
 
-    //Bugetul jucatorilor
+    //Player's budget
     private int player1Money = 2000;
     private int player2Money = 2000;
 
     //Level
     private int level = 1;
 
-    //Mizele jucatorilor
+    //Player's stake
     private int totalStake = 0;
     private int player1Stake = 0;
     private int player2Stake = 0;
 
     //Constructor
-    public Game() {
+    public _Game() {
         initComponents();
 
-        //Introducerea in pachet a cartilor
-        cardList.add(new Card(1, "♣", 1, "ATRE.png"));
-        cardList.add(new Card(1, "♥", 1, "AROSU.png"));
-        cardList.add(new Card(1, "♦", 1, "AROMB.png"));
-        cardList.add(new Card(1, "♠", 1, "ANEAGRA.png"));
+        //Adding each one of the 52 cards in the deck
+        cardList.add(new _Card(1, "♣", 1, "ATRE.png"));
+        cardList.add(new _Card(1, "♥", 1, "AROSU.png"));
+        cardList.add(new _Card(1, "♦", 1, "AROMB.png"));
+        cardList.add(new _Card(1, "♠", 1, "ANEAGRA.png"));
 
-        cardList.add(new Card(2, "♣", 2, "DOITREFLA.png"));
-        cardList.add(new Card(2, "♥", 2, "DOIROSU.png"));
-        cardList.add(new Card(2, "♦", 2, "DOIROMB.png"));
-        cardList.add(new Card(2, "♠", 2, "DOINEGRU.png"));
+        cardList.add(new _Card(2, "♣", 2, "DOITREFLA.png"));
+        cardList.add(new _Card(2, "♥", 2, "DOIROSU.png"));
+        cardList.add(new _Card(2, "♦", 2, "DOIROMB.png"));
+        cardList.add(new _Card(2, "♠", 2, "DOINEGRU.png"));
 
-        cardList.add(new Card(3, "♣", 3, "TREITREFLA.png"));
-        cardList.add(new Card(3, "♥", 3, "TREIROSU.png"));
-        cardList.add(new Card(3, "♦", 3, "TREIROMB.png"));
-        cardList.add(new Card(3, "♠", 3, "TREINEGRU.png"));
+        cardList.add(new _Card(3, "♣", 3, "TREITREFLA.png"));
+        cardList.add(new _Card(3, "♥", 3, "TREIROSU.png"));
+        cardList.add(new _Card(3, "♦", 3, "TREIROMB.png"));
+        cardList.add(new _Card(3, "♠", 3, "TREINEGRU.png"));
 
-        cardList.add(new Card(4, "♣", 4, "PATRUTREFLA.png"));
-        cardList.add(new Card(4, "♥", 4, "PATRUROSU.png"));
-        cardList.add(new Card(4, "♦", 4, "PATRUROMB.png"));
-        cardList.add(new Card(4, "♠", 4, "PATRUNEGRU.png"));
+        cardList.add(new _Card(4, "♣", 4, "PATRUTREFLA.png"));
+        cardList.add(new _Card(4, "♥", 4, "PATRUROSU.png"));
+        cardList.add(new _Card(4, "♦", 4, "PATRUROMB.png"));
+        cardList.add(new _Card(4, "♠", 4, "PATRUNEGRU.png"));
 
-        cardList.add(new Card(5, "♣", 5, "5N.png"));
-        cardList.add(new Card(5, "♥", 5, "5RO.png"));
-        cardList.add(new Card(5, "♦", 5, "5ROSU.png"));
-        cardList.add(new Card(5, "♠", 5, "5N.png"));
+        cardList.add(new _Card(5, "♣", 5, "5N.png"));
+        cardList.add(new _Card(5, "♥", 5, "5RO.png"));
+        cardList.add(new _Card(5, "♦", 5, "5ROSU.png"));
+        cardList.add(new _Card(5, "♠", 5, "5N.png"));
 
-        cardList.add(new Card(6, "♣", 6, "6N.png"));
-        cardList.add(new Card(6, "♥", 6, "6RO.png"));
-        cardList.add(new Card(6, "♦", 6, "6ROSU.png"));
-        cardList.add(new Card(6, "♠", 6, "6N.png"));
+        cardList.add(new _Card(6, "♣", 6, "6N.png"));
+        cardList.add(new _Card(6, "♥", 6, "6RO.png"));
+        cardList.add(new _Card(6, "♦", 6, "6ROSU.png"));
+        cardList.add(new _Card(6, "♠", 6, "6N.png"));
 
-        cardList.add(new Card(7, "♣", 7, "7N.png"));
-        cardList.add(new Card(7, "♥", 7, "7RO.png"));
-        cardList.add(new Card(7, "♦", 7, "7ROSU.png"));
-        cardList.add(new Card(7, "♠", 7, "7N.png"));
+        cardList.add(new _Card(7, "♣", 7, "7N.png"));
+        cardList.add(new _Card(7, "♥", 7, "7RO.png"));
+        cardList.add(new _Card(7, "♦", 7, "7ROSU.png"));
+        cardList.add(new _Card(7, "♠", 7, "7N.png"));
 
-        cardList.add(new Card(8, "♣", 8, "8N.png"));
-        cardList.add(new Card(8, "♥", 8, "8RO.png"));
-        cardList.add(new Card(8, "♦", 8, "8ROSU.png"));
-        cardList.add(new Card(8, "♠", 8, "8N.png"));
+        cardList.add(new _Card(8, "♣", 8, "8N.png"));
+        cardList.add(new _Card(8, "♥", 8, "8RO.png"));
+        cardList.add(new _Card(8, "♦", 8, "8ROSU.png"));
+        cardList.add(new _Card(8, "♠", 8, "8N.png"));
 
-        cardList.add(new Card(9, "♣", 9, "9N.png"));
-        cardList.add(new Card(9, "♥", 9, "9RO.png"));
-        cardList.add(new Card(9, "♦", 9, "9ROSU.png"));
-        cardList.add(new Card(9, "♠", 9, "9N.png"));
+        cardList.add(new _Card(9, "♣", 9, "9N.png"));
+        cardList.add(new _Card(9, "♥", 9, "9RO.png"));
+        cardList.add(new _Card(9, "♦", 9, "9ROSU.png"));
+        cardList.add(new _Card(9, "♠", 9, "9N.png"));
 
-        cardList.add(new Card(10, "♣", 10, "10N.png"));
-        cardList.add(new Card(10, "♥", 10, "10RO.png"));
-        cardList.add(new Card(10, "♦", 10, "10ROSU.png"));
-        cardList.add(new Card(10, "♠", 10, "10N.png"));
+        cardList.add(new _Card(10, "♣", 10, "10N.png"));
+        cardList.add(new _Card(10, "♥", 10, "10RO.png"));
+        cardList.add(new _Card(10, "♦", 10, "10ROSU.png"));
+        cardList.add(new _Card(10, "♠", 10, "10N.png"));
 
-        cardList.add(new Card(12, "♣", 10, "12N.png"));
-        cardList.add(new Card(12, "♥", 10, "12RO.png"));
-        cardList.add(new Card(12, "♦", 10, "12ROSU.png"));
-        cardList.add(new Card(12, "♠", 10, "12N.png"));
+        cardList.add(new _Card(12, "♣", 10, "12N.png"));
+        cardList.add(new _Card(12, "♥", 10, "12RO.png"));
+        cardList.add(new _Card(12, "♦", 10, "12ROSU.png"));
+        cardList.add(new _Card(12, "♠", 10, "12N.png"));
 
-        cardList.add(new Card(13, "♣", 10, "13N.png"));
-        cardList.add(new Card(13, "♥", 10, "13RO.png"));
-        cardList.add(new Card(13, "♦", 10, "13ROSU.png"));
-        cardList.add(new Card(13, "♠", 10, "13N.png"));
+        cardList.add(new _Card(13, "♣", 10, "13N.png"));
+        cardList.add(new _Card(13, "♥", 10, "13RO.png"));
+        cardList.add(new _Card(13, "♦", 10, "13ROSU.png"));
+        cardList.add(new _Card(13, "♠", 10, "13N.png"));
 
-        cardList.add(new Card(14, "♣", 10, "14N.png"));
-        cardList.add(new Card(14, "♥", 10, "14RO.png"));
-        cardList.add(new Card(14, "♦", 10, "14ROSU.png"));
-        cardList.add(new Card(14, "♠", 10, "14N.png"));
+        cardList.add(new _Card(14, "♣", 10, "14N.png"));
+        cardList.add(new _Card(14, "♥", 10, "14RO.png"));
+        cardList.add(new _Card(14, "♦", 10, "14ROSU.png"));
+        cardList.add(new _Card(14, "♠", 10, "14N.png"));
 
         //Amestecarea pachetului
         Collections.shuffle(cardList);
@@ -230,7 +230,7 @@ public class Game extends javax.swing.JFrame {
     //Calculating the 2nd version of each player'sscore
     public void scoreVersions() {
         player1TotalScore_A_equals_11 = 0; //reset for the case A=value 11
-        for (Card c : handPlayer1) {
+        for (_Card c : handPlayer1) {
 
             if (c.getValue() == 1) {
                 c.setValue(11);
@@ -245,7 +245,7 @@ public class Game extends javax.swing.JFrame {
         }
 
         player2TotalScore_A_eqals_11 = 0; //resetfor the case A=value 11
-        for (Card c : handPlayer2) {
+        for (_Card c : handPlayer2) {
 
             if (c.getValue() == 1) {
                 c.setValue(11);
@@ -264,7 +264,7 @@ public class Game extends javax.swing.JFrame {
     private void imparteCartile() {
 
         for (int i = 0; i < 2; i++) {
-            Card carte = cardList.get(indexCard);
+            _Card carte = cardList.get(indexCard);
             handPlayer1.add(carte);
             player1TotalScore += carte.getValue();
             indexCard++;
@@ -275,7 +275,7 @@ public class Game extends javax.swing.JFrame {
         myCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource(handPlayer1.get(1).getIcon())));
 
         for (int i = 0; i < 2; i++) {
-            Card carte = cardList.get(indexCard);
+            _Card carte = cardList.get(indexCard);
             handPlayer2.add(carte);
             player2TotalScore += carte.getValue();
             indexCard++;
@@ -290,7 +290,7 @@ public class Game extends javax.swing.JFrame {
 
     //Method-Player 1 pulls a card
     public void pullPlayer1() {
-        Card carte = cardList.get(indexCard);
+        _Card carte = cardList.get(indexCard);
         handPlayer1.add(carte);
         indexCard++;
         player1TotalScore += carte.getValue();
@@ -302,7 +302,7 @@ public class Game extends javax.swing.JFrame {
 
     //Method-Player 2 pulls a card
     public void pullPlayer2() {
-        Card carte = cardList.get(indexCard);
+        _Card carte = cardList.get(indexCard);
         handPlayer2.add(carte);
         indexCard++;
         cardsPlayer2Pulled++;
@@ -877,13 +877,13 @@ public class Game extends javax.swing.JFrame {
         if (player1Money >= 1000) {
             System.out.println("1000");
             raiseStake(1000);
-        }        // TODO add your handling code here:
+        }       
     }//GEN-LAST:event_add1000ActionPerformed
 
     //Main method
     public static void main(String args[]) {
         //New game
-        Game blackjack = new Game();
+        _Game blackjack = new _Game();
         blackjack.setVisible(true);
         blackjack.setDefaultCloseOperation(EXIT_ON_CLOSE);
         blackjack.setTitle("Blackjack");
